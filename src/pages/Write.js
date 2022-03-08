@@ -1,10 +1,11 @@
-import React from 'react';
+import Editor from "../components/Editor/Editor";
 
 const Write = () => {
+
   return (
-    <div>
-      Write 일기 작성페이지
-    </div>
+    <>
+      <Editor></Editor>
+    </>
   );
 };
 

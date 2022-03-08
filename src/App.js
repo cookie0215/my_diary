@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import GlobalStyle from './styles/GlobalStyle';
 import GlobalFonts from './styles/fonts/font';
 import theme from './styles/theme';
-import Layout from './components/Layout';
+import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
 import Diary from './pages/Diary';
 import Edit from './pages/Edit';
@@ -39,9 +39,73 @@ const reducer = (state, action) => {
 export const DiaryStateContext = React.createContext();
 export const DiaryDispatchContext = React.createContext();
 
-function App() {
-  const [data, dispatch] = useReducer(reducer, []);
 
+
+const dummyData = [
+  {
+    id: 1,
+    emotion: 1,
+    content: "오늘의 일기 1번",
+    date: 1646282146465
+  },
+  {
+    id: 2,
+    emotion: 2,
+    content: "오늘의 일기 2번",
+    date: 1646282146466
+  },
+  {
+    id: 3,
+    emotion: 3,
+    content: "오늘의 일기 3번",
+    date: 1646282146467
+  },
+  {
+    id: 4,
+    emotion: 4,
+    content: "오늘의 일기 4번",
+    date: 1646282146468
+  },
+  {
+    id: 5,
+    emotion: 5,
+    content: "오늘의 일기 5번",
+    date: 1646282146469
+  },
+  {
+    id: 6,
+    emotion: 1,
+    content: "오늘의 일기 1번",
+    date: 1646282146465
+  },
+  {
+    id: 7,
+    emotion: 2,
+    content: "오늘의 일기 2번",
+    date: 1646282146466
+  },
+  {
+    id: 8,
+    emotion: 3,
+    content: "오늘의 일기 3번",
+    date: 1646282146467
+  },
+  {
+    id: 9,
+    emotion: 4,
+    content: "오늘의 일기 4번",
+    date: 1646282146468
+  },
+  {
+    id: 10,
+    emotion: 5,
+    content: "오늘의 일기 5번",
+    date: 1646282146469
+  },
+]
+
+function App() {
+  const [data, dispatch] = useReducer(reducer, dummyData);
   const dataId = useRef(0);
 
   // 일기 생성

@@ -3,7 +3,8 @@ const calcRem = (size) => `${size / 16}rem`;
 
 const font = {
   family: {
-    base: 'Katuri',
+    title: 'Katuri',
+    base: 'Cafe24Oneprettynight',
     write: 'Mugunghwa',
   },
   size: {
