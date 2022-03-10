@@ -113,12 +113,10 @@ const Editor = () => {
             />
           </TextWrap>
         </Section>
-        <Section>
-          <ControlBox>
-            <Btn text={"완료"} type={"create"} onClick={handleSubmit} />
-          </ControlBox>
-        </Section>
       </EditorWrap>
+      <ControlBox>
+        <Btn text={"완료"} type={"create"} onClick={handleSubmit} />
+      </ControlBox>
     </>
   );
 };

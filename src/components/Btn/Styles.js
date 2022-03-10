@@ -11,6 +11,9 @@ cursor: pointer;
 
 &.btn_create {
   width: 100%;
+  max-width: 650px;
+  padding-top: 16px;
+  padding-bottom: 16px;
   background: ${({ theme }) => theme.colors.yellow};
   position: fixed;
   bottom: 0;

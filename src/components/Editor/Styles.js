@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const EditorWrap = styled.div`
-  padding: 20px 20px 30px;
+  padding: 20px 20px 60px;
 `;
 export const Section = styled.section`
   margin-bottom: 40px;

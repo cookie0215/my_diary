@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 // DiaryList
 export const DiaryListWrap = styled.div`
-  padding: 20px 20px 30px;
+  padding: 20px 20px 60px;
 `;
 export const Sort = styled.div`
   display: flex;
