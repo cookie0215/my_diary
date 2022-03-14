@@ -24,7 +24,7 @@ const DiaryItem = ({ id, emotion, date, content }) => {
       </Emotion>
       <DateCont onClick={goDetail}>
         <DiaryDate>{strDate}</DiaryDate>
-        <ContPreview>{content.slice(0, 30)}</ContPreview>
+        <ContPreview>{content.length < 30 ? content : content.slice(0, 30) + "..."}</ContPreview>
       </DateCont>
       <EditDelete>
         <Btn text={<EditIcon />} type={'icon'} onClick={goEdit} />

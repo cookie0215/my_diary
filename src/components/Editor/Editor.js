@@ -1,4 +1,4 @@
-import { useState, useRef, useContext } from 'react';
+import { useState, useRef, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { DiaryDispatchContext } from '../../App';
 import Header from '../Header/Header';
@@ -50,7 +50,7 @@ const emotionList = [
 ]
 
 
-const Editor = () => {
+const Editor = ({ isEdit, originData }) => {
   const navigate = useNavigate();
   const contentRef = useRef();
 
@@ -58,7 +58,7 @@ const Editor = () => {
   const [emotion, setEmotion] = useState(3);
   const [content, setContent] = useState("");
 
-  const { onCreate } = useContext(DiaryDispatchContext);
+  const { onCreate, onEdit } = useContext(DiaryDispatchContext);
   const handleClickEmotion = (emotion) => {
     setEmotion(emotion);
   }
@@ -69,14 +69,31 @@ const Editor = () => {
       contentRef.current.focus();
       return;
     }
+
+    if (window.confirm(isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?")) {
+      if (!isEdit) {
+        onCreate(date, content, emotion);
+      } else {
+        onEdit(originData.id, date, content, emotion);
+      }
+    }
+
     onCreate(date, content, emotion);
     navigate('/', { replace: true })
   }
 
+  useEffect(() => {
+    if (isEdit) {
+      setDate(getStringDate(new Date(parseInt(originData.date))));
+      setEmotion(originData.emotion);
+      setContent(originData.content);
+    }
+  }, [isEdit, originData])
+
   return (
     <>
       <Header
-        headerText={"일기 쓰기"}
+        headerText={isEdit ? "일기 수정" : "일기 쓰기"}
         leftChild={<Btn text={<LeftArrowIcon />} type={'icon'} onClick={() => navigate(-1)} />}
       />
       <EditorWrap>
@@ -115,7 +132,11 @@ const Editor = () => {
         </Section>
       </EditorWrap>
       <ControlBox>
-        <Btn text={"완료"} type={"create"} onClick={handleSubmit} />
+        <Btn
+          text={"완료"}
+          type={"create"}
+          onClick={handleSubmit}
+        />
       </ControlBox>
     </>
   );

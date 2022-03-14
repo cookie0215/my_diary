@@ -72,36 +72,6 @@ const dummyData = [
     content: "오늘의 일기 5번",
     date: 1646282146469
   },
-  {
-    id: 6,
-    emotion: 1,
-    content: "오늘의 일기 1번",
-    date: 1646282146465
-  },
-  {
-    id: 7,
-    emotion: 2,
-    content: "오늘의 일기 2번",
-    date: 1646282146466
-  },
-  {
-    id: 8,
-    emotion: 3,
-    content: "오늘의 일기 3번",
-    date: 1646282146467
-  },
-  {
-    id: 9,
-    emotion: 4,
-    content: "오늘의 일기 4번",
-    date: 1646282146468
-  },
-  {
-    id: 10,
-    emotion: 5,
-    content: "오늘의 일기 5번",
-    date: 1646282146469
-  },
 ]
 
 function App() {
@@ -159,8 +129,8 @@ function App() {
           <ThemeProvider theme={theme}>
             <Routes>
               <Route path='/' element={<Layout><Home /></Layout>}></Route>
-              <Route path='/diary' element={<Layout><Diary /></Layout>}></Route>
-              <Route path='/edit' element={<Layout><Edit /></Layout>}></Route>
+              <Route path='/diary/:id' element={<Layout><Diary /></Layout>}></Route>
+              <Route path='/edit/:id' element={<Layout><Edit /></Layout>}></Route>
               <Route path='/write' element={<Layout><Write /></Layout>}></Route>
             </Routes>
           </ThemeProvider>

@@ -18,8 +18,10 @@ export const DiaryItemWrap = styled.div`
   justify-content: space-between;
 `;
 export const Emotion = styled.div`
-  min-width: 60px;
-  min-height: 60px;
+  width: 60px;
+  height: 60px;
+  flex-basis: 60px;
+  flex-shrink: 0;
   border-radius: 50%;
   background: ${({ theme }) => theme.colors.white};
   border: 3px solid ${({ theme }) => theme.colors.yellow};
@@ -28,6 +30,8 @@ export const Emotion = styled.div`
 export const DateCont = styled.div`
   flex-grow: 1;
   margin-left: 20px;
+  margin-right: 10px;
+  word-break: keep-all;
   cursor: pointer;
 `;
 export const DiaryDate = styled.div`
