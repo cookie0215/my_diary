@@ -54,9 +54,9 @@ const Editor = ({ isEdit, originData }) => {
   const navigate = useNavigate();
   const contentRef = useRef();
 
-  const [date, setDate] = useState(getStringDate(new Date()));
   const [emotion, setEmotion] = useState(3);
   const [content, setContent] = useState("");
+  const [date, setDate] = useState(getStringDate(new Date()));
 
   const { onCreate, onEdit } = useContext(DiaryDispatchContext);
   const handleClickEmotion = (emotion) => {
@@ -70,7 +70,11 @@ const Editor = ({ isEdit, originData }) => {
       return;
     }
 
-    if (window.confirm(isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?")) {
+    if (
+      window.confirm(
+        isEdit ? "일기를 수정하시겠습니까?" : "새로운 일기를 작성하시겠습니까?"
+      )
+    ) {
       if (!isEdit) {
         onCreate(date, content, emotion);
       } else {
@@ -78,9 +82,8 @@ const Editor = ({ isEdit, originData }) => {
       }
     }
 
-    onCreate(date, content, emotion);
-    navigate('/', { replace: true })
-  }
+    navigate("/", { replace: true });
+  };
 
   useEffect(() => {
     if (isEdit) {
@@ -88,13 +91,19 @@ const Editor = ({ isEdit, originData }) => {
       setEmotion(originData.emotion);
       setContent(originData.content);
     }
-  }, [isEdit, originData])
+  }, [isEdit, originData]);
 
   return (
     <>
       <Header
         headerText={isEdit ? "일기 수정" : "일기 쓰기"}
-        leftChild={<Btn text={<LeftArrowIcon />} type={'icon'} onClick={() => navigate(-1)} />}
+        leftChild={
+          <Btn
+            text={<LeftArrowIcon />}
+            type={'icon'}
+            onClick={() => navigate(-1)}
+          />
+        }
       />
       <EditorWrap>
         <Section>
@@ -112,7 +121,8 @@ const Editor = ({ isEdit, originData }) => {
           <EmotionWrap>
             {emotionList.map((it) =>
               <EmotionItem
-                key={it.emotionId} {...it}
+                key={it.emotionId}
+                {...it}
                 onClick={handleClickEmotion}
                 isSelected={it.emotionId === emotion}
               />

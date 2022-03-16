@@ -21,7 +21,8 @@ const Edit = () => {
         navigate("/", { replace: true });
       }
     }
-  }, [id, diaryList])
+  }, [id, diaryList]);
+
   return (
     <>
       {originData && <Editor isEdit={true} originData={originData} />}

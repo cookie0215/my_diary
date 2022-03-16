@@ -103,15 +103,12 @@ function App() {
       type: "EDIT",
       data: {
         id: targetId,
-        data: {
-          id: targetId,
-          date: new Date(date).getTime(),
-          content,
-          emotion,
-        }
-      }
-    })
-  }
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+  };
 
 
   return (
